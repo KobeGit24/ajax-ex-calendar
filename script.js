@@ -52,12 +52,19 @@ function printHoliday(monthBase) {
 
             var response = data.response;
             var success = data.success;
-            
-            for (var i = 0; i < response.length; i++) {
-                var element =  $(".days-month li[data-datecomplete='" + response[i].date + "']");
-                element.addClass('holidays');
-                element.append("  ----  " + response[i].name);
+
+            if (success) {
+                
+                for (var i = 0; i < response.length; i++) {
+                    var element =  $(".days-month li[data-datecomplete='" + response[i].date + "']");
+                    element.addClass('holidays');
+                    element.append("  ----  " + response[i].name);
+                }
+                    
+            } else {
+                console.log('errore');
             }
+            
         },
         error: function (error) {
             console.log(error);
