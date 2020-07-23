@@ -56,7 +56,7 @@ function printHoliday(monthBase) {
             for (var i = 0; i < response.length; i++) {
                 var element =  $(".days-month li[data-datecomplete='" + response[i].date + "']");
                 element.addClass('holidays');
-                element.append("  ----  " + response[i]["name"]);
+                element.append("  ----  " + response[i].name);
             }
         },
         error: function (error) {
