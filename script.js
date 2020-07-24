@@ -37,8 +37,6 @@ function nextMonth(month) {
 
             var response = data.response;
             var success = data.success;
-            console.log(data);
-            console.log(success);
 
             if (success) {
                 
@@ -82,7 +80,7 @@ function prevMonth(month) {
        target.append(daysHTML);
 
     }
-    var monthNameHTML = compiled2 (nameMonth);
+    var monthNameHTML = compiled2 ({nameMonth});
     target2.append(monthNameHTML);
 
     $.ajax({
@@ -120,23 +118,21 @@ function prevMonth(month) {
 function printMonth() {
     var currentMonth = 0;
     $('.fa-chevron-right').click(function(){
-    console.log(currentMonth);
     if (currentMonth>=0 & currentMonth<=11) {
         nextMonth(currentMonth);
       currentMonth++;
-    } else{
-      currentMonth = 0;
+    } else if (currentMonth >= 12) {
+        currentMonth=11; 
       alert('non puoi scegliere una data fuori dal 2018');
     }
   });
   $('.fa-chevron-left').click(function(){
-  console.log(currentMonth);
   if (currentMonth>=0 & currentMonth<=11) {
     prevMonth(currentMonth);
     currentMonth--;
-  } else{
-    currentMonth = 11;
-    alert('non puoi scegliere una data fuori dal 2018');
+  } else if (currentMonth<0) {
+      alert('non puoi scegliere una data fuori dal 2018');
+      currentMonth = 0;
   }
   
   });

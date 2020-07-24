@@ -3,10 +3,21 @@
 }
 
 .days-month {
+    width: 100%;
     list-style: none;
     text-align: center;
-}
+} 
 
 #title {
+  text-align: center;
+}
+
+#title h1>i {
+  margin: 0 30px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+#month-selected {
   text-align: center;
 }
