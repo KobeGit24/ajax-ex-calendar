@@ -1,46 +1,92 @@
-// Creiamo un calendario dinamico con le festività. Il calendario partirà da gennaio 2018 e si concluderà a dicembre 2018 (unici dati disponibili sull'API).
-// Milestone 1
-// Creiamo il mese di Gennaio, e con la chiamata all'API inseriamo le festività.
-// Milestone 2
-// Diamo la possibilità di cambiare mese, gestendo il caso in cui l'API non possa ritornare festività. 
-// Attenzione!
-// Ogni volta che cambio mese dovrò:
-// Controllare se il mese è valido (per ovviare al problema che l'API non carichi holiday non del 2018)
-// Controllare quanti giorni ha il mese scelto formando così una lista 
-// Chiedere all'api quali sono le festività per il mese scelto
-// Evidenziare le festività nella lista
-// Consigli e domande del giorno:
-// Abbiamo visto assieme una libereria che serve per gestire le date... quale sarà?
-// Una chiamata ajax può anche non andare a buon fine, che si fa in quel caso? Lasciamo l'utente ad attendere? ;) 
-//API: https://flynn.boolean.careers/exercises/api/holidays
-
-
 function init() {
-    
-    var monthBase = moment("2018-01-01");
-    printMonth(monthBase);
-    printHoliday(monthBase);
+    printMonth();
 }
 
-function printMonth(monthBase) {
+function nextMonth(month) {
+    var monthBase = moment('2018-'+ (month+1) , 'YYYY-M');
+    var year = monthBase.year();
+    var month = monthBase.month();
+    var nameMonth = monthBase.format('MMMM');
     var daysInMonth = monthBase.daysInMonth();
     var template = $('#calendar-template').html();
     var compiled = Handlebars.compile(template);
     var target = $('.days-month');
     target.html('');
-    for (var i = 1; i <= 31; i++) {
-        var datecomplete = moment({ year : monthBase.year(), month: monthBase.month(), day : i});
+    var template2 = $('#calendar-month-template').html();
+    var compiled2 = Handlebars.compile(template2);
+    var target2 = $('#month-selected');
+    target2.html('');
+    for (var i = 1; i <= daysInMonth; i++) {
+        var datecomplete = moment({ year : year, month: month, day : i});
        var daysHTML = compiled({
            'value': i,
            'datecomplete': datecomplete.format('YYYY-MM-DD')
        });
        target.append(daysHTML); 
     }
+    var monthNameHTML = compiled2 ({nameMonth});
+    target2.append(monthNameHTML);
+    nameMonth();
+    $.ajax({
+        url : 'https://flynn.boolean.careers/exercises/api/holidays',
+        method : 'GET',
+        data : {
+            'month': month,
+            'year': year
+        },
+        success: function (data) {
+
+            var response = data.response;
+            var success = data.success;
+            console.log(data);
+            console.log(success);
+
+            if (success) {
+                
+                for (var i = 0; i < response.length; i++) {
+                    var element =  $(".days-month li[data-datecomplete='" + response[i].date + "']");
+                    element.addClass('holidays');
+                    element.append("  ----  " + response[i].name);
+                }
+                    
+            } else {
+                alert('errore');
+            }
+            
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
 }
 
-function printHoliday(monthBase) {
+function prevMonth(month) {
+    var monthBase = moment('2018-'+ (month-1) , 'YYYY-M');
+    var nameMonth = monthBase.format('MMMM');
     var year = monthBase.year();
     var month = monthBase.month();
+    var daysInMonth = monthBase.daysInMonth();
+    var template = $('#calendar-template').html();
+    var compiled = Handlebars.compile(template);
+    var target = $('.days-month');
+    target.html('');
+    var template2 = $('#calendar-month-template').html();
+    var compiled2 = Handlebars.compile(template2);
+    var target2 = $('#month-selected');
+    target2.html('');
+    for (var i = 1; i <= daysInMonth; i++) {
+        var datecomplete = moment({ year : year, month: month, day : i});
+        var daysHTML = compiled({
+           'value': i,
+           'datecomplete': datecomplete.format('YYYY-MM-DD')
+       });
+       target.append(daysHTML);
+
+    }
+    var monthNameHTML = compiled2 (nameMonth);
+    target2.append(monthNameHTML);
+    nameMonth();
+
     $.ajax({
         url : 'https://flynn.boolean.careers/exercises/api/holidays',
         method : 'GET',
@@ -62,7 +108,7 @@ function printHoliday(monthBase) {
                 }
                     
             } else {
-                console.log('errore');
+                alert('errore');
             }
             
         },
@@ -70,6 +116,32 @@ function printHoliday(monthBase) {
             console.log(error);
         }
     });
+
+}
+
+function printMonth() {
+    var currentMonth = 0;
+    $('.fa-chevron-right').click(function(){
+    console.log(currentMonth);
+    if (currentMonth>=0 & currentMonth<=11) {
+        nextMonth(currentMonth);
+      currentMonth++;
+    } else{
+      currentMonth = 0;
+      alert('non puoi scegliere una data fuori dal 2018');
+    }
+  });
+  $('.fa-chevron-left').click(function(){
+  console.log(currentMonth);
+  if (currentMonth>=0 & currentMonth<=11) {
+    prevMonth(currentMonth);
+    currentMonth--;
+  } else{
+    currentMonth = 11;
+    alert('non puoi scegliere una data fuori dal 2018');
+  }
+  
+  });
 }
 
 $(document).ready(init);
