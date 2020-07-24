@@ -26,7 +26,6 @@ function nextMonth(month) {
     }
     var monthNameHTML = compiled2 ({nameMonth});
     target2.append(monthNameHTML);
-    nameMonth();
     $.ajax({
         url : 'https://flynn.boolean.careers/exercises/api/holidays',
         method : 'GET',
@@ -85,7 +84,6 @@ function prevMonth(month) {
     }
     var monthNameHTML = compiled2 (nameMonth);
     target2.append(monthNameHTML);
-    nameMonth();
 
     $.ajax({
         url : 'https://flynn.boolean.careers/exercises/api/holidays',
