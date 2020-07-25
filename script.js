@@ -117,6 +117,7 @@ function prevMonth(month) {
 function printMonth() {
     var currentMonth = 0;
     $('.fa-chevron-right').click(function(){
+        $('#title>.start-calendar').addClass('hidden');
     if (currentMonth>=0 && currentMonth<=11) {
         nextMonth(currentMonth);
       currentMonth++;
@@ -126,6 +127,7 @@ function printMonth() {
     }
   });
   $('.fa-chevron-left').click(function(){
+    $('#title>.start-calendar').addClass('hidden');
   if (currentMonth>=0 && currentMonth<=12) {
     prevMonth(currentMonth);
     currentMonth--;
