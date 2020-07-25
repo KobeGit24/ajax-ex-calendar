@@ -112,22 +112,21 @@ function prevMonth(month) {
             console.log(error);
         }
     });
-
 }
 
 function printMonth() {
     var currentMonth = 0;
     $('.fa-chevron-right').click(function(){
-    if (currentMonth>=0 & currentMonth<=11) {
+    if (currentMonth>=0 && currentMonth<=11) {
         nextMonth(currentMonth);
       currentMonth++;
     } else if (currentMonth >= 12) {
-        currentMonth=11; 
-      alert('non puoi scegliere una data fuori dal 2018');
+        currentMonth=12; 
+        alert('non puoi scegliere una data fuori dal 2018');
     }
   });
   $('.fa-chevron-left').click(function(){
-  if (currentMonth>=0 & currentMonth<=11) {
+  if (currentMonth>=0 && currentMonth<=12) {
     prevMonth(currentMonth);
     currentMonth--;
   } else if (currentMonth<0) {
