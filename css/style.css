@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+body {
+  font-family: sans-serif;
+}
+
 .container {
   width: 100%;
   height: 100vh;
@@ -15,36 +19,61 @@
   align-items: center;
 }
 
-.holidays {
-    color: red;
-}
 
 .list {
   margin: 0 auto;
-  width: 60%;
-  text-align: center;
+  width: 80%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.days-name {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.days-name li {
+  width: calc(100%/7);
+  height: 100px;
+  color: #ffffff;
+  padding: 5px;
+  font-size: 25px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .days-month {
-    width: 100%;
-    list-style: none;
-    text-align: center;
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
 } 
 
-/* .days-month li:nth-child(even) {
-  width: 50%;
+.days-month li {
+  width: calc(100%/7);
+  height: 100px;
+  background-color:  darkblue;
+  color: #ffffff;
+  padding: 5px;
+  border: 1px solid black;
+  font-size: 22px;
+  font-weight: 600;
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.days-month li:nth-child(odd) {
-  width: 50%;
-  display: flex;
-  justify-content: flex-end;
-} */
+.days-month li.holidays {
+  color: red;
+}
 
 #title {
   text-align: center;
@@ -63,17 +92,19 @@
 
 #title h1 {
   font-size: 50px;
+  font-weight: 600;
 }
 
 #title h1>i {
   margin: 0 30px;
   padding: 0 10px;
   cursor: pointer;
+  color: #ffffff;
 }
 
 #month-selected {
-  margin: 40px 0;
+  margin: 30px 0;
   text-align: center;
   font-size: 30px;
-  color: chartreuse;
+  color: green;
 }

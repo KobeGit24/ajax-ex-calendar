@@ -43,7 +43,7 @@ function nextMonth(month) {
                 for (var i = 0; i < response.length; i++) {
                     var element =  $(".days-month li[data-datecomplete='" + response[i].date + "']");
                     element.addClass('holidays');
-                    element.append("  ----  " + response[i].name);
+                    element.append(" " + response[i].name);
                 }
                     
             } else {
@@ -100,7 +100,7 @@ function prevMonth(month) {
                 for (var i = 0; i < response.length; i++) {
                     var element =  $(".days-month li[data-datecomplete='" + response[i].date + "']");
                     element.addClass('holidays');
-                    element.append("  ----  " + response[i].name);
+                    element.append(" " + response[i].name);
                 }
                     
             } else {
@@ -118,6 +118,7 @@ function printMonth() {
     var currentMonth = 0;
     $('.fa-chevron-right').click(function(){
         $('#title>.start-calendar').addClass('hidden');
+        $('.list>.days-name').removeClass('hidden');
     if (currentMonth>=0 && currentMonth<=11) {
         nextMonth(currentMonth);
       currentMonth++;
@@ -128,6 +129,7 @@ function printMonth() {
   });
   $('.fa-chevron-left').click(function(){
     $('#title>.start-calendar').addClass('hidden');
+    $('.list>.days-name').removeClass('hidden');
   if (currentMonth>=0 && currentMonth<=12) {
     prevMonth(currentMonth);
     currentMonth--;
