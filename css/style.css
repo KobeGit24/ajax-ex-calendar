@@ -19,30 +19,9 @@ body {
   align-items: center;
 }
 
-
 .list {
   margin: 0 auto;
   width: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.days-name {
-  width: 100%;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.days-name li {
-  width: calc(100%/7);
-  height: 100px;
-  color: #ffffff;
-  padding: 5px;
-  font-size: 25px;
-  font-weight: 600;
   display: flex;
   flex-direction: column;
   justify-content: center;

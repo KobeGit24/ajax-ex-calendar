@@ -7,7 +7,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script id="calendar-template" type="text/x-handlebars-template">
-        <li data-datecomplete="{{ datecomplete }}">{{ value }}</li>
+        <li data-datecomplete="{{ datecomplete }}">
+           <span>
+            {{ value }}
+           </span> 
+        </li>
     </script>
     <script id="calendar-month-template" type="text/x-handlebars-template">
             <h2 data-monthNumber="{{ month }}">
@@ -35,15 +39,6 @@
         </div>
         <div id="month-selected"></div>
         <div class="list">
-            <ul class="days-name hidden">
-                <li>Monday</li>
-                <li>Tuesday</li>
-                <li>Wednesday</li>
-                <li>Thursday</li>
-                <li>Friday</li>
-                <li>Saturday</li>
-                <li>Sunday</li>
-            </ul>
             <ul class="days-month">
             </ul>
         </div>
