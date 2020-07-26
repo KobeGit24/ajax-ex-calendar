@@ -63,6 +63,8 @@ body {
   color: red;
   font-size: 28px;
   text-transform: capitalize;
+  text-shadow: 
+  -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
 
 .hidden {
@@ -72,6 +74,8 @@ body {
 #title h1 {
   font-size: 55px;
   font-weight: 600;
+  text-shadow: 
+  -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff;
 }
 
 #title h1>i {
