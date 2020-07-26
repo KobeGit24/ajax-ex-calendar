@@ -38,11 +38,11 @@ body {
 .days-month li {
   width: calc(100%/7);
   height: 100px;
-  background-color:  darkblue;
-  color: #ffffff;
+  background-color:  #ffffff;
+  color: black;
   padding: 5px;
-  border: 1px solid black;
-  font-size: 22px;
+  border: 1px solid #cccccc;
+  font-size: 25px;
   font-weight: 600;
   display: flex;
   flex-direction: column;
@@ -70,7 +70,7 @@ body {
 }
 
 #title h1 {
-  font-size: 50px;
+  font-size: 55px;
   font-weight: 600;
 }
 
@@ -78,12 +78,16 @@ body {
   margin: 0 30px;
   padding: 0 10px;
   cursor: pointer;
-  color: #ffffff;
+  color:  limegreen;
+  text-shadow: 
+  -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
 
 #month-selected {
   margin: 30px 0;
   text-align: center;
-  font-size: 30px;
-  color: green;
+  font-size: 35px;
+  color: limegreen;
+  text-shadow: 
+  -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
